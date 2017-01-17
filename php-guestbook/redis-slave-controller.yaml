@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: ReplicationController
-metadata:
+metadata: 
   name: redis-slave
+  namespace: testing
   labels:
     name: redis-slave
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     name: redis-slave
   template:
@@ -14,7 +15,7 @@ spec:
         name: redis-slave
     spec:
       containers:
-        - name: slave
+        - name: redis-slave
           image: kubeguide/guestbook-redis-slave
           env:
             - name: GET_HOSTS_FROM
